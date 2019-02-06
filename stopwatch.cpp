@@ -12,15 +12,22 @@
 */
 #include "stopwatch.h"
 
-void start_stopwatch(){
+double start;
+double end;
 
+void start_stopwatch()
+{
+    start = clock();
 }
-static void long_taking_function(){
-
+double elapsed_time()
+{
+    if (end < start)
+    {
+        return (clock() - start) / CLOCKS_PER_SEC;
+    }
+    return (end - start) / CLOCKS_PER_SEC;
 }
-void stop_stopwatch(){
-
-}
-double elapsed_time(){
- return 0;
+void stop_stopwatch()
+{
+    end = clock();
 }
